@@ -47,8 +47,14 @@ router.get('/checkout',function(req,res,next){
   res.render('shop/checkout',{total:cart.totalPrice});
 });
 
-router.get('/item/info',function (req,res,next) {
-  res.render('/shop/itemInfo');
+router.get('/item/:id',function (req,res,next) {
+  var productId = req.params.id;
+  Product.findById(productId,function (err,product) {
+    if(err ){
+      return res.redirect('/');
+    }
+    res.render('shop/itemInfo',{title:product.title,imgPath:product.imagePath,description:product.description ,price:product.price});
+  });
 });
 
 module.exports = router;
