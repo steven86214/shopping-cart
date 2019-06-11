@@ -47,5 +47,8 @@ router.get('/checkout',function(req,res,next){
   res.render('shop/checkout',{total:cart.totalPrice});
 });
 
-router.post('/')
+router.get('/item/info',function (req,res,next) {
+  res.render('/shop/itemInfo');
+});
+
 module.exports = router;
