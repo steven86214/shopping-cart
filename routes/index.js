@@ -60,4 +60,17 @@ router.get('/item/:id',function (req,res,next) {
   });
 });
 
+router.get('/search/:title',function (req,res,next) {
+  var searchTitle = req.params.title;
+  Product.find({"title" : {"$regex" : searchTitle , "$options": "i"} },function (err , docs) {
+    var productChunks = [];
+    var chunksize = 3;
+    for(var i = 0;i<docs.length;i+=chunksize){
+      productChunks.push(docs.slice(i,i + chunksize));
+    }
+    console.log(docs);
+    res.render('shop/searchResult', {title: 'Search Result', products: docs});
+  });
+
+});
 module.exports = router;
