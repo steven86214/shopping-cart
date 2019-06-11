@@ -1,7 +1,7 @@
 var Product = require('../models/product');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/shopping',{useNewUrlParser : true});
+mongoose.connect('mongodb+srv://user:12345@cluster0-nmd0f.gcp.mongodb.net/shopping?retryWrites=true&w=majority',{useNewUrlParser : true});
 var products = [new Product({
     imagePath :"https://media.roxytaiwan.com.tw/media/catalog/product/cache/thumbnail/500x500/9df78eab33525d08d6e5fb8d27136e95/a/r/arjs700124_setsessionii_p_wht_frt1.jpg",
     title : 'white clothes',
