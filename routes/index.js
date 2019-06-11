@@ -68,8 +68,12 @@ router.get('/search/:title',function (req,res,next) {
     for(var i = 0;i<docs.length;i+=chunksize){
       productChunks.push(docs.slice(i,i + chunksize));
     }
-    console.log(docs);
-    res.render('shop/searchResult', {title: 'Search Result', products: docs});
+    if(docs.length == 0){
+      res.redirect('/');
+    }
+    else{
+      res.render('shop/searchResult', {title: 'Search Result', products: docs});
+    }
   });
 
 });
