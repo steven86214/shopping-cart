@@ -53,7 +53,10 @@ router.get('/item/:id',function (req,res,next) {
     if(err ){
       return res.redirect('/');
     }
-    res.render('shop/itemInfo',{title:product.title,imgPath:product.imagePath,description:product.description ,price:product.price});
+    res.render('shop/itemInfo',{title:product.title,
+                                imgPath:product.imagePath,
+                                description:product.description ,
+                                price:product.price});
   });
 });
 
